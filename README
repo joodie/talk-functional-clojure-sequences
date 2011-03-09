@@ -1,0 +1,13 @@
+These are the slides I used for my presentation at the Amsterdam
+Clojurians meeting of 9 March, 2011.
+
+The file talk.clj contains the slides as ^L (page break) separated
+pages of clojure code. Note that github.com doesn't currently display
+page break characters in source view; download the raw file or clone
+the project and open it in Emacs to see them.
+
+The project.clj file contains the leiningen config so you can run the
+code interactively using SLIME/swank-clojure.
+
+The related emacs code to navigate and show each page in a huge font
+is at https://github.com/joodie/emacs-simple-slides
