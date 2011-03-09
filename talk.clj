@@ -10,6 +10,9 @@
 ;;;;
 ;;;; Functional clojure: sequences
 ;;;;
+;;;; (c) 2011 Joost Diepenmaat
+;;;;     Zeekat Softwareontwikkeling
+;;;;
 ;;;;   http://joost.zeekat.nl/
 ;;;;   joost@zeekat.nl
 
@@ -161,7 +164,6 @@
 
 
 ;;;; solution: use lazy-seq.
-juxt
 
 ((fn self [f coll]
    (lazy-seq (and (seq coll)
