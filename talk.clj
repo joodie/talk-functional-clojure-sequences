@@ -10,7 +10,7 @@
 ;;;;
 ;;;; Functional clojure: sequences
 ;;;;
-;;;; (c) 2011 Joost Diepenmaat
+;;;; (c) 2011-2012 Joost Diepenmaat
 ;;;;     Zeekat Softwareontwikkeling
 ;;;;
 ;;;;   http://joost.zeekat.nl/
@@ -61,16 +61,34 @@
 
 (seq #{:a :b 1 2})
 
-;;;; Seq on empty collections
+;;;;
+;;;; So what is a seq?
+;;;;
+
+;;;;
+;;;; What is a list?
+;;;;
 
-(seq? ())
+;;;;  Cell     Cell     Cell     Cell
+;;;;  +-+-+    +-+-+    +-+-+    +-+-+
+;;;;  |*|*+--> |*|*+--> |*|*+--> |*|*+--> ..
+;;;;  +++-+    +++-+    +++-+    +++-+
+;;;;   |        |        |        |
+;;;;   V        V        V        V
+;;;;  value    value    value    value
 
-(seq nil)
-(seq ())
-(seq [])
-(seq {})
+(def v1 :my-value)
+(def v2 :another-value)
+(def lst (list 1 2 3 4))
 
-;; etc...
+(cons v1 lst)
+
+(cons v1 (cons v2 lst))
+
+
+;;;;
+;;;; Seqs are *abstractions* that act like immutable linked lists
+;;;;
 
 
 ;;;; What does a seq provide
@@ -86,6 +104,34 @@
 
 ;; But do not think too hard about rest vs next right now
 ;; when in doubt, use next
+
+
+;;;; Seq to collections
+
+(def s (seq [1 2 3 4 5 6]))
+
+;; Direct constructors
+
+(vec s)
+(set s)
+
+;; conj into an existing collection
+
+(into [] s)
+(into #{} s)
+(into {} (seq [[:a 1] [:b 2]]))
+(into '() s) ; -> reversed!
+
+
+;;;; Seq on empty collections returns nil
+
+(seq? ())
+
+(seq nil)
+(seq ())
+(seq [])
+(seq {})
+(seq #{})
 
 
 ;;;;
@@ -355,5 +401,3 @@
 ;;;;
 ;;;;   http://joost.zeekat.nl/
 ;;;;   joost@zeekat.nl
-
-
