@@ -35,6 +35,9 @@
             {:name "dog"
              :legs [:dog-leg1 :dog-leg2
                     :dog-leg3 :dog-leg4]}])
+
+
+
 
 ;;;; What is a seq
 
@@ -102,6 +105,9 @@
 (rest '(:a))
 (next '(:a))
 
+(next ())
+(rest ())
+
 ;; But do not think too hard about rest vs next right now
 ;; when in doubt, use next
 
@@ -120,7 +126,9 @@
 (into [] s)
 (into #{} s)
 (into {} (seq [[:a 1] [:b 2]]))
-(into '() s) ; -> reversed!
+
+;; but note:
+(into '() s)
 
 
 ;;;; Seq on empty collections returns nil
